@@ -12,6 +12,7 @@ jobs:
 
       - name: Print payload
         run: |
+          echo ${{ github.event.client_payload.foo }} 
           echo payload: ${{ github.event.client_payload }}
 
 #curl -H "Accept: application/vnd.github.everest-preview+json" \
