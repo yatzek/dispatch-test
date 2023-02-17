@@ -1,0 +1,28 @@
+name: Tower callback tests
+
+on:
+  repository_dispatch:
+    types: [ tower_callback ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Print payload
+        run: |
+          echo payload: ${{ github.event.client_payload }}
+
+#curl -H "Accept: application/vnd.github.everest-preview+json" \
+#    -H "Authorization: token <token>" \
+#    --request POST \
+#    --data '{"event_type": "manual-trigger-mytest"}' \
+#    https://api.github.com/repos/<org>/<repo>/dispatches
+
+# custom payload
+# -d '{"event_type": "awesomeness", "client_payload": {"foo": "bar"}}'
+
+#
+# fine grained token, Actions - write permission, token only for SingleShot repo
+#
