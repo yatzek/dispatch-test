@@ -1,0 +1,21 @@
+name: Test ECR Action
+
+# if: github.event_name == 'pull_request'
+# if: github.event.ref == 'refs/heads/main'
+
+on:
+  #  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: gha-runner-scale-set-jacek
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Hello World"
+
+      - name: my custom action
+        uses: docker://registry-adapter.tools.cosmic.sky/core-platform/core-engineering/test/custom-action:latest
+        with:
+          message: "Custom Action Hello World"
+
